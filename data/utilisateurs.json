@@ -1,0 +1,10 @@
+[
+    {
+        "identifiant": "admin",
+        "mot_de_passe": "$2y$10$gucubU7KqdH8Sv6Tvj1Tou9Wrrxzzj6HjNaQfCyNgf4Uuzlksbm7q",
+        "role": "super_administrateur",
+        "nom_complet": "Super Admin",
+        "date_creation": "2026-04-21",
+        "actif": true
+    }
+]
