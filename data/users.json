@@ -1,0 +1,18 @@
+[
+    {
+        "identifiant": "admin",
+        "mot_de_passe": "$2y$10$gucubU7KqdH8Sv6Tvj1Tou9Wrrxzzj6HjNaQfCyNgf4Uuzlksbm7q",
+        "role": "super_administrateur",
+        "nom_complet": "Super Admin",
+        "date_creation": "2026-04-21",
+        "actif": true
+    },
+    {
+        "identifiant": "user1",
+        "mot_de_passe": "$2y$10$ofYJuRL6J5b23hrasr5dOeeUeNTBNyM\/tIDgt3j46crito\/UyIp.y",
+        "role": "utilisateur",
+        "nom_complet": "Utilisateur Test",
+        "date_creation": "2026-04-21",
+        "actif": true
+    }
+]
