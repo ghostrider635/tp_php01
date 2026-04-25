@@ -3,6 +3,10 @@ require_once __DIR__ . '/../config/config.php';
 require_once __DIR__ . '/../auth/session.php';
 $user = utilisateurConnecte();
 $role = $user['role'] ?? '';
+
+// Détecter la page active
+$currentPage = basename($_SERVER['PHP_SELF']);
+$currentDir  = basename(dirname($_SERVER['PHP_SELF']));
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -13,37 +17,72 @@ $role = $user['role'] ?? '';
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/style.css">
 </head>
 <body>
-<header class="site-header">
-    <div class="header-brand">🛒 Système de Facturation</div>
-    <nav class="header-nav">
-        <a href="<?= BASE_URL ?>/index.php">Accueil</a>
+<div class="app-layout">
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+    <div class="sidebar-brand">
+        🛒 <span>FacturePro</span>
+    </div>
+
+    <nav class="sidebar-nav">
+        <a href="<?= BASE_URL ?>/index.php"
+           class="<?= $currentPage === 'index.php' && $currentDir !== 'facturation' ? 'active' : '' ?>">
+            <span class="nav-icon">⊞</span>
+            <span>Dashboard</span>
+        </a>
 
         <?php if (in_array($role, [ROLE_CAISSIER, ROLE_MANAGER, ROLE_SUPER_ADMIN])): ?>
-            <a href="<?= BASE_URL ?>/modules/facturation/nouvelle-facture.php">Nouvelle Facture</a>
+        <a href="<?= BASE_URL ?>/modules/facturation/nouvelle-facture.php"
+           class="<?= $currentPage === 'nouvelle-facture.php' ? 'active' : '' ?>">
+            <span class="nav-icon">🧾</span>
+            <span>Nouvelle Facture</span>
+        </a>
         <?php endif; ?>
 
         <?php if (in_array($role, [ROLE_MANAGER, ROLE_SUPER_ADMIN])): ?>
-            <a href="<?= BASE_URL ?>/modules/produits/liste.php">Produits</a>
-            <a href="<?= BASE_URL ?>/modules/produits/enregistrer.php">Enregistrer Produit</a>
-            <a href="<?= BASE_URL ?>/rapports/rapport-journalier.php">Rapport Journalier</a>
-            <a href="<?= BASE_URL ?>/rapports/rapport-mensuel.php">Rapport Mensuel</a>
+        <div class="sidebar-section">Gestion</div>
+
+        <a href="<?= BASE_URL ?>/modules/produits/liste.php"
+           class="<?= in_array($currentPage, ['liste.php','enregistrer.php']) && $currentDir === 'produits' ? 'active' : '' ?>">
+            <span class="nav-icon">📦</span>
+            <span>Produits</span>
+        </a>
+
+        <a href="<?= BASE_URL ?>/rapports/rapport-journalier.php"
+           class="<?= in_array($currentPage, ['rapport-journalier.php','rapport-mensuel.php']) ? 'active' : '' ?>">
+            <span class="nav-icon">📊</span>
+            <span>Rapports</span>
+        </a>
         <?php endif; ?>
 
         <?php if ($role === ROLE_SUPER_ADMIN): ?>
-            <a href="<?= BASE_URL ?>/modules/admin/gestion-comptes.php">Comptes</a>
+        <div class="sidebar-section">Admin</div>
+        <a href="<?= BASE_URL ?>/modules/admin/gestion-comptes.php"
+           class="<?= $currentDir === 'admin' ? 'active' : '' ?>">
+            <span class="nav-icon">👥</span>
+            <span>Comptes</span>
+        </a>
         <?php endif; ?>
-
-        <span class="header-user">
-            👤 <?= htmlspecialchars($user['nom_complet'] ?? '') ?>
-            (<?= htmlspecialchars($role) ?>)
-        </span>
-        <a href="<?= BASE_URL ?>/auth/logout.php" class="btn-logout">Déconnexion</a>
     </nav>
-</header>
+
+    <div class="sidebar-footer">
+        <div class="sidebar-user">
+            👤 <span><?= htmlspecialchars($user['nom_complet'] ?? '') ?>
+            <br><small><?= htmlspecialchars($role) ?></small></span>
+        </div>
+        <a href="<?= BASE_URL ?>/auth/logout.php" class="btn-logout">
+            ⏻ <span>Déconnexion</span>
+        </a>
+    </div>
+</aside>
+
+<!-- MAIN -->
+<div class="main-content">
 
 <?php if (!empty($_SESSION['erreur_acces'])): ?>
-    <div class="alerte erreur"><?= htmlspecialchars($_SESSION['erreur_acces']) ?></div>
+    <div class="alerte erreur" style="margin:1rem 1.5rem 0;"><?= htmlspecialchars($_SESSION['erreur_acces']) ?></div>
     <?php unset($_SESSION['erreur_acces']); ?>
 <?php endif; ?>
 
-<main class="contenu-principal">
+<div class="page-body">
