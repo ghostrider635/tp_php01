@@ -8,15 +8,36 @@
 </div><!-- /.app-layout -->
 
 <script>
-(function(){
-    var btn     = document.getElementById('hamburger-btn');
-    var sidebar = document.querySelector('.sidebar');
-    var overlay = document.getElementById('sidebar-overlay');
-    function close(){ sidebar.classList.remove('open'); overlay.classList.remove('active'); }
-    if(btn){ btn.addEventListener('click', function(){ sidebar.classList.toggle('open'); overlay.classList.toggle('active'); }); }
-    if(overlay){ overlay.addEventListener('click', close); }
-    document.querySelectorAll('.sidebar-nav a').forEach(function(a){ a.addEventListener('click', close); });
-})();
+var btn     = document.getElementById('hamburger-btn');
+var sidebar = document.getElementById('sidebar');
+var overlay = document.getElementById('sidebar-overlay');
+
+function openSidebar() {
+    sidebar.classList.add('open');
+    overlay.classList.add('active');
+    document.body.classList.add('menu-open');
+}
+
+function closeSidebar() {
+    sidebar.classList.remove('open');
+    overlay.classList.remove('active');
+    document.body.classList.remove('menu-open');
+}
+
+btn.addEventListener('click', function() {
+    if (sidebar.classList.contains('open')) {
+        closeSidebar();
+    } else {
+        openSidebar();
+    }
+});
+
+overlay.addEventListener('click', closeSidebar);
+
+var navLinks = document.querySelectorAll('.sidebar-nav a');
+for (var i = 0; i < navLinks.length; i++) {
+    navLinks[i].addEventListener('click', closeSidebar);
+}
 </script>
 </body>
 </html>

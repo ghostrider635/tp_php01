@@ -99,6 +99,7 @@ require_once __DIR__ . '/includes/header.php';
 <?php if (in_array($role, [ROLE_MANAGER, ROLE_SUPER_ADMIN]) && !empty($facturesAujourdhui)): ?>
 <div class="card">
     <div class="card-title">Factures d'aujourd'hui</div>
+    <div class="tableau-wrapper">
     <table class="tableau">
         <thead>
             <tr>
@@ -124,13 +125,15 @@ require_once __DIR__ . '/includes/header.php';
             <?php endforeach; ?>
         </tbody>
     </table>
+    </div><!-- /.tableau-wrapper -->
 </div>
 <?php endif; ?>
 
 <!-- STOCK BAS -->
 <?php if (in_array($role, [ROLE_MANAGER, ROLE_SUPER_ADMIN]) && !empty($stockBas)): ?>
 <div class="card">
-    <div class="card-title" style="color:var(--red-light);">⚠ Stock bas (≤ 5 unités)</div>
+    <div class="card-title" style="color:var(--red-light);">&#9888; Stock bas (&le; 5 unités)</div>
+    <div class="tableau-wrapper">
     <table class="tableau">
         <thead>
             <tr><th>Produit</th><th>Code-barres</th><th>Stock</th></tr>
@@ -145,6 +148,7 @@ require_once __DIR__ . '/includes/header.php';
             <?php endforeach; ?>
         </tbody>
     </table>
+    </div><!-- /.tableau-wrapper -->
 </div>
 <?php endif; ?>
 

@@ -4,7 +4,6 @@ require_once __DIR__ . '/../auth/session.php';
 $user = utilisateurConnecte();
 $role = $user['role'] ?? '';
 
-// Détecter la page active
 $currentPage = basename($_SERVER['PHP_SELF']);
 $currentDir  = basename(dirname($_SERVER['PHP_SELF']));
 ?>
@@ -19,8 +18,11 @@ $currentDir  = basename(dirname($_SERVER['PHP_SELF']));
 <body>
 <div class="app-layout">
 
+<!-- OVERLAY -->
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+
 <!-- SIDEBAR -->
-<aside class="sidebar">
+<aside class="sidebar" id="sidebar">
     <div class="sidebar-brand">
         🛒 <span>FacturePro</span>
     </div>
@@ -77,16 +79,17 @@ $currentDir  = basename(dirname($_SERVER['PHP_SELF']));
     </div>
 </aside>
 
-<!-- OVERLAY MOBILE -->
-<div class="sidebar-overlay" id="sidebar-overlay"></div>
-
 <!-- MAIN -->
 <div class="main-content">
+
 <div class="topbar">
-    <button class="hamburger" id="hamburger-btn" aria-label="Menu">&#9776;</button>
+    <button class="hamburger" id="hamburger-btn" aria-label="Menu">
+        <span></span><span></span><span></span>
+    </button>
     <span class="topbar-title">FacturePro</span>
     <div class="topbar-right">
         <span>👤 <?= htmlspecialchars($user['nom_complet'] ?? '') ?></span>
+        <a href="<?= BASE_URL ?>/auth/logout.php" class="topbar-logout">⏻</a>
     </div>
 </div>
 

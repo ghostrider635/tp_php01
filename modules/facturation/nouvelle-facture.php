@@ -125,6 +125,7 @@ require_once __DIR__ . '/../../includes/header.php';
 <?php if (!empty($_SESSION['panier'])): ?>
 <div class="facture-apercu">
     <h3>Articles</h3>
+    <div class="tableau-wrapper">
     <table class="tableau">
         <thead>
             <tr>
@@ -152,6 +153,7 @@ require_once __DIR__ . '/../../includes/header.php';
             <tr><td colspan="3"><strong>Net à payer</strong></td><td colspan="2"><strong><?= number_format($totalTTC, 0, ',', ' ') ?> CDF</strong></td></tr>
         </tfoot>
     </table>
+    </div><!-- /.tableau-wrapper -->
 
     <form method="POST" action="" style="display:inline;">
         <button type="submit" name="valider_facture" class="btn btn-succes">✔ Valider la facture</button>

@@ -17,6 +17,7 @@ require_once __DIR__ . '/../../includes/header.php';
 <?php if (empty($produits)): ?>
     <p class="vide">Aucun produit enregistré.</p>
 <?php else: ?>
+    <div class="tableau-wrapper">
     <table class="tableau">
         <thead>
             <tr>
@@ -41,6 +42,7 @@ require_once __DIR__ . '/../../includes/header.php';
             <?php endforeach; ?>
         </tbody>
     </table>
+    </div><!-- /.tableau-wrapper -->
 <?php endif; ?>
 
 <?php require_once __DIR__ . '/../../includes/footer.php'; ?>

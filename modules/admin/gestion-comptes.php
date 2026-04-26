@@ -20,6 +20,7 @@ require_once __DIR__ . '/../../includes/header.php';
     <div class="alerte succes"><?= htmlspecialchars($succes) ?></div>
 <?php endif; ?>
 
+<div class="tableau-wrapper">
 <table class="tableau">
     <thead>
         <tr>
@@ -52,5 +53,6 @@ require_once __DIR__ . '/../../includes/header.php';
         <?php endforeach; ?>
     </tbody>
 </table>
+</div><!-- /.tableau-wrapper -->
 
 <?php require_once __DIR__ . '/../../includes/footer.php'; ?>
