@@ -77,8 +77,18 @@ $currentDir  = basename(dirname($_SERVER['PHP_SELF']));
     </div>
 </aside>
 
+<!-- OVERLAY MOBILE -->
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+
 <!-- MAIN -->
 <div class="main-content">
+<div class="topbar">
+    <button class="hamburger" id="hamburger-btn" aria-label="Menu">&#9776;</button>
+    <span class="topbar-title">FacturePro</span>
+    <div class="topbar-right">
+        <span>👤 <?= htmlspecialchars($user['nom_complet'] ?? '') ?></span>
+    </div>
+</div>
 
 <?php if (!empty($_SESSION['erreur_acces'])): ?>
     <div class="alerte erreur" style="margin:1rem 1.5rem 0;"><?= htmlspecialchars($_SESSION['erreur_acces']) ?></div>

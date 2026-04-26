@@ -24,6 +24,7 @@ require_once __DIR__ . '/../../includes/header.php';
         <p><strong>Caissier :</strong> <?= htmlspecialchars($facture['caissier']) ?></p>
     </div>
 
+    <div class="tableau-wrapper">
     <table class="tableau">
         <thead>
             <tr>
@@ -50,6 +51,8 @@ require_once __DIR__ . '/../../includes/header.php';
         </tfoot>
     </table>
 
+    </table>
+    </div><!-- /.tableau-wrapper -->
     <p class="facture-merci">Merci pour votre achat !</p>
 </div>
 

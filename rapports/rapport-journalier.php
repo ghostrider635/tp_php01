@@ -28,6 +28,7 @@ require_once __DIR__ . '/../includes/header.php';
 <?php if (empty($factures)): ?>
     <p class="vide">Aucune facture pour cette date.</p>
 <?php else: ?>
+    <div class="tableau-wrapper">
     <table class="tableau">
         <thead>
             <tr>
@@ -54,6 +55,7 @@ require_once __DIR__ . '/../includes/header.php';
             <?php endforeach; ?>
         </tbody>
     </table>
+    </div><!-- /.tableau-wrapper -->
 <?php endif; ?>
 
 <?php require_once __DIR__ . '/../includes/footer.php'; ?>

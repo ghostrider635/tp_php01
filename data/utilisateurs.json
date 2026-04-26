@@ -1,18 +1,10 @@
 [
     {
         "identifiant": "admin",
-        "mot_de_passe": "$2y$10$gucubU7KqdH8Sv6Tvj1Tou9Wrrxzzj6HjNaQfCyNgf4Uuzlksbm7q",
+        "mot_de_passe": "$2y$10$ixl\/dWk8ExPV6u85hYUW5OREAymjtVggV4Xf7oqUsIXVooOO2EJeK",
         "role": "super_administrateur",
         "nom_complet": "Super Admin",
         "date_creation": "2026-04-21",
-        "actif": true
-    },
-    {
-        "identifiant": "caissier",
-        "mot_de_passe": "$2y$10$BZAcGbfD6UdXh43RvYFYvOD.4MEmqmJ2Wl1dDxcbJooDsB9XDkIYK",
-        "role": "caissier",
-        "nom_complet": "waseka aron",
-        "date_creation": "2026-04-24",
         "actif": true
     }
 ]
