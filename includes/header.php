@@ -13,7 +13,15 @@ $currentDir  = basename(dirname($_SERVER['PHP_SELF']));
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Système de Facturation</title>
+    <link rel="manifest" href="<?= BASE_URL ?>/manifest.json">
+    <meta name="theme-color" content="#1d6fa4">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="FacturePro">
+    <link rel="apple-touch-icon" href="<?= BASE_URL ?>/assets/icons/icon-192.svg">
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/style.css">
+    <script src="<?= BASE_URL ?>/assets/js/pwa.js" defer></script>
 </head>
 <body>
 <div class="app-layout">
