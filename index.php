@@ -19,6 +19,17 @@ $stockBas           = array_filter($produits, fn($p) => $p['quantite_stock'] <= 
 require_once __DIR__ . '/includes/header.php';
 ?>
 
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js')
+        .then(reg => console.log('Service Worker enregistré !'))
+        .catch(err => console.log('Erreur:', err));
+    });
+  }
+</script>
+<link rel="manifest" href="/manifest.json">
+
 <div class="page-titre">
     <h2>Dashboard</h2>
     <span style="font-size:0.82rem; color:var(--text-muted);"><?= date('l d F Y') ?></span>
