@@ -39,25 +39,21 @@ require_once __DIR__ . '/includes/header.php';
 <?php if (in_array($role, [ROLE_MANAGER, ROLE_SUPER_ADMIN])): ?>
 <div class="dashboard-grid">
     <div class="dash-card blue">
-        <span class="dash-card-icon">🧾</span>
         <span class="dash-card-label">Factures aujourd'hui</span>
         <span class="dash-card-value"><?= count($facturesAujourdhui) ?></span>
         <span class="dash-card-sub"><?= number_format($totalJour, 0, ',', ' ') ?> CDF</span>
     </div>
     <div class="dash-card green">
-        <span class="dash-card-icon">📅</span>
         <span class="dash-card-label">Factures ce mois</span>
         <span class="dash-card-value"><?= count($facturesMois) ?></span>
         <span class="dash-card-sub"><?= number_format($totalMois, 0, ',', ' ') ?> CDF</span>
     </div>
     <div class="dash-card purple">
-        <span class="dash-card-icon">📦</span>
         <span class="dash-card-label">Produits en catalogue</span>
         <span class="dash-card-value"><?= count($produits) ?></span>
         <span class="dash-card-sub"><?= count($stockBas) ?> en stock bas</span>
     </div>
     <div class="dash-card yellow">
-        <span class="dash-card-icon">💰</span>
         <span class="dash-card-label">CA mensuel (TTC)</span>
         <span class="dash-card-value" style="font-size:1.1rem;"><?= number_format($totalMois, 0, ',', ' ') ?></span>
         <span class="dash-card-sub">CDF</span>
@@ -72,33 +68,33 @@ require_once __DIR__ . '/includes/header.php';
 
         <?php if (in_array($role, [ROLE_CAISSIER, ROLE_MANAGER, ROLE_SUPER_ADMIN])): ?>
         <a href="<?= BASE_URL ?>/modules/facturation/nouvelle-facture.php" class="action-btn">
-            <span class="action-icon">🧾</span>
+            
             Nouvelle Facture
         </a>
         <?php endif; ?>
 
         <?php if (in_array($role, [ROLE_MANAGER, ROLE_SUPER_ADMIN])): ?>
         <a href="<?= BASE_URL ?>/modules/produits/liste.php" class="action-btn">
-            <span class="action-icon">📦</span>
+            
             Catalogue
         </a>
         <a href="<?= BASE_URL ?>/modules/produits/enregistrer.php" class="action-btn">
-            <span class="action-icon">➕</span>
+            
             Ajouter Produit
         </a>
         <a href="<?= BASE_URL ?>/rapports/rapport-journalier.php" class="action-btn">
-            <span class="action-icon">📊</span>
+            
             Rapport Jour
         </a>
         <a href="<?= BASE_URL ?>/rapports/rapport-mensuel.php" class="action-btn">
-            <span class="action-icon">📈</span>
+           
             Rapport Mois
         </a>
         <?php endif; ?>
 
         <?php if ($role === ROLE_SUPER_ADMIN): ?>
         <a href="<?= BASE_URL ?>/modules/admin/gestion-comptes.php" class="action-btn">
-            <span class="action-icon">👥</span>
+            
             Comptes
         </a>
         <?php endif; ?>

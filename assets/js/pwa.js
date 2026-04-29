@@ -161,9 +161,16 @@
         },
     };
 
-    // Mettre en cache les produits au chargement si en ligne
+    // Mettre en cache les produits en idle (ne pas bloquer le chargement)
     if (navigator.onLine) {
-        document.addEventListener('DOMContentLoaded', cacherProduits);
+        document.addEventListener('DOMContentLoaded', () => {
+            // requestIdleCallback si dispo, sinon setTimeout 3s
+            if ('requestIdleCallback' in window) {
+                requestIdleCallback(cacherProduits, { timeout: 5000 });
+            } else {
+                setTimeout(cacherProduits, 3000);
+            }
+        });
     }
 
     // Afficher le badge de factures en attente

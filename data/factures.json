@@ -1,1 +1,20 @@
-[]
+[
+    {
+        "id_facture": "FAC-20260428-001",
+        "date": "2026-04-28",
+        "heure": "15:25:59",
+        "caissier": "admin",
+        "articles": [
+            {
+                "code_barre": "5038862133838",
+                "nom": "jus",
+                "prix_unitaire_ht": 11110.95,
+                "quantite": 1,
+                "sous_total_ht": 11110.95
+            }
+        ],
+        "total_ht": 11110.95,
+        "tva": 1778,
+        "total_ttc": 12888.95
+    }
+]

@@ -4,7 +4,15 @@
         "nom": "jus",
         "prix_unitaire_ht": 11110.95,
         "date_expiration": "2026-04-19",
-        "quantite_stock": 67,
+        "quantite_stock": 66,
         "date_enregistrement": "2026-04-24"
+    },
+    {
+        "code_barre": "6009880197309",
+        "nom": "jus michee",
+        "prix_unitaire_ht": 2000,
+        "date_expiration": "2026-03-12",
+        "quantite_stock": 5,
+        "date_enregistrement": "2026-04-29"
     }
 ]
