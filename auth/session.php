@@ -1,7 +1,31 @@
 <?php
 require_once __DIR__ . '/../config/config.php';
 
+// Configuration des sessions pour Vercel
 if (session_status() === PHP_SESSION_NONE) {
+    // Sur Vercel, stocker les sessions dans /tmp
+    $isVercel = isset($_ENV['VERCEL']) && $_ENV['VERCEL'] === '1';
+    
+    if ($isVercel) {
+        // Configurer le chemin des sessions pour Vercel
+        ini_set('session.save_path', '/tmp/sessions');
+        
+        // Créer le dossier des sessions s'il n'existe pas
+        if (!is_dir('/tmp/sessions')) {
+            mkdir('/tmp/sessions', 0755, true);
+        }
+        
+        // Utiliser des cookies plus sécurisés
+        session_set_cookie_params([
+            'lifetime' => 86400, // 24 heures
+            'path' => '/',
+            'domain' => '',
+            'secure' => true,    // HTTPS seulement sur Vercel
+            'httponly' => true,
+            'samesite' => 'Strict'
+        ]);
+    }
+    
     session_start();
 }
 
