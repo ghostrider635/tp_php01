@@ -16,5 +16,30 @@
         "total_ht": 11110.95,
         "tva": 1778,
         "total_ttc": 12888.95
+    },
+    {
+        "id_facture": "FAC-20260430-001",
+        "date": "2026-04-30",
+        "heure": "23:24:47",
+        "caissier": "admin",
+        "articles": [
+            {
+                "code_barre": "5038862133838",
+                "nom": "jus",
+                "prix_unitaire_ht": 11110.95,
+                "quantite": 11,
+                "sous_total_ht": 122220.45000000001
+            },
+            {
+                "code_barre": "5038862133838",
+                "nom": "jus",
+                "prix_unitaire_ht": 11110.95,
+                "quantite": 11,
+                "sous_total_ht": 122220.45000000001
+            }
+        ],
+        "total_ht": 244440.90000000002,
+        "tva": 39111,
+        "total_ttc": 283551.9
     }
 ]

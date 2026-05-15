@@ -6,5 +6,21 @@
         "nom_complet": "Super Admin",
         "date_creation": "2026-04-21",
         "actif": true
+    },
+    {
+        "identifiant": "fatou",
+        "mot_de_passe": "$2y$10$VwLMSZotYfv.e3p2f4rjDuMYlLH14GBMu5NWyFG5Z6EzBdAr8Q5mq",
+        "role": "manager",
+        "nom_complet": "shako",
+        "date_creation": "2026-05-15",
+        "actif": true
+    },
+    {
+        "identifiant": "benedict",
+        "mot_de_passe": "$2y$10$ZQWxaC6\/sO9Vj1\/Dhs7LsuLMLF80HeMQ7mF1UbJTkxLE.Z0lGjce.",
+        "role": "caissier",
+        "nom_complet": "willu",
+        "date_creation": "2026-05-15",
+        "actif": true
     }
 ]

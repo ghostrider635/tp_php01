@@ -1,4 +1,4 @@
-<?php
+ <?php
 require_once __DIR__ . '/../config/config.php';
 require_once __DIR__ . '/../auth/session.php';
 require_once __DIR__ . '/../includes/fonctions-factures.php';
@@ -13,7 +13,7 @@ $method = $_SERVER['REQUEST_METHOD'];
 
 if ($method === 'GET') {
     $date = $_GET['date'] ?? null;
-    $mois = $_GET['mois'] ?? null;
+    $mois = $_GET['mois'] ?? null;  
 
     if ($date)      $data = array_values(obtenirFacturesParDate($date));
     elseif ($mois)  $data = array_values(obtenirFacturesParMois($mois));
