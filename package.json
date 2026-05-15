@@ -1,0 +1,15 @@
+{
+  "name": "facturepro",
+  "version": "1.0.0",
+  "description": "Système de facturation PHP",
+  "scripts": {
+    "dev": "php -S localhost:3000"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@vercel/php": "^0.6.0"
+  },
+  "engines": {
+    "node": ">=14"
+  }
+}
