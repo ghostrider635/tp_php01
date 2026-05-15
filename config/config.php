@@ -40,3 +40,9 @@ if ($isVercel) {
 } else {
     define('BASE_URL', '/tp_php01');
 }
+
+// Pour Vercel, définir le répertoire racine
+if ($isVercel) {
+    // S'assurer que les chemins sont corrects
+    chdir(__DIR__ . '/..');
+}
