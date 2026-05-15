@@ -1,0 +1,26 @@
+# Ignorer les fichiers pour Vercel
+.DS_Store
+.git/
+.gitignore
+node_modules/
+.vscode/
+.idea/
+Thumbs.db
+
+# Fichiers de développement
+init-vercel.php
+README_VERCEL.md
+DEPLOY.md
+
+# Fichiers de données (seront copiés dans /tmp)
+data/*.json
+!/data/utilisateurs.json
+!/data/produits.json
+!/data/factures.json
+!/data/facturation.json
+
+# Logs
+*.log
+
+# Fichiers temporaires
+/tmp/*

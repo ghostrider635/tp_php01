@@ -5,9 +5,9 @@ const SYNC_TAG     = 'sync-factures';
 
 // Cache minimal à l'install — ne pas surcharger le premier chargement
 const STATIC_ASSETS = [
-    '/tp_php01/assets/css/style.css',
-    '/tp_php01/assets/js/pwa.js',
-    '/tp_php01/manifest.json',
+    '/assets/css/style.css',
+    '/assets/js/pwa.js',
+    '/manifest.json',
 ];
 
 // ── INSTALL ───────────────────────────────────────────────────────────────────
@@ -39,7 +39,7 @@ self.addEventListener('fetch', (event) => {
     if (event.request.method !== 'GET') return;
 
     // Stale-While-Revalidate pour les API JSON
-    if (url.includes('/tp_php01/api/') || url.includes('.json')) {
+    if (url.includes('/api/') || url.includes('.json')) {
         event.respondWith(staleWhileRevalidate(event.request, CACHE_DATA));
         return;
     }
@@ -109,7 +109,7 @@ async function syncFacturesEnAttente() {
 
     for (const item of factures) {
         try {
-            const res = await fetch('/tp_php01/api/factures.php', {
+            const res = await fetch('/api/factures.php', {
                 method:  'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body:    JSON.stringify(item.data),
