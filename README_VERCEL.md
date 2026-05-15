@@ -1,106 +1,63 @@
-# Déploiement de FacturePro sur Vercel
+# Déploiement FacturePro sur Vercel
 
-## 📋 Prérequis
-1. Compte Vercel gratuit : https://vercel.com/signup
-2. Compte GitHub (recommandé) : https://github.com
-3. Git installé sur votre machine
+## Configuration requise
 
-## 🚀 Étapes de déploiement
+1. Compte Vercel (gratuit)
+2. CLI Vercel installé : `npm i -g vercel`
+3. Git pour le versioning
 
-### Étape 1 : Initialiser Git
+## Déploiement
+
+### Première fois
 ```bash
 cd tp_php01
-git init
-git add .
-git commit -m "Initial commit - Application FacturePro"
+vercel login
+vercel
 ```
 
-### Étape 2 : Créer un dépôt GitHub
-1. Allez sur https://github.com
-2. Cliquez sur "+" → "New repository"
-3. Nommez-le (ex: `facturepro`)
-4. Ne cochez PAS "Initialize with README"
-5. Suivez les instructions pour pousser votre code :
-
+### Déploiements suivants
 ```bash
-git remote add origin https://github.com/votre-username/facturepro.git
-git branch -M main
-git push -u origin main
+vercel --prod
 ```
 
-### Étape 3 : Déployer sur Vercel
-1. Connectez-vous à https://vercel.com
-2. Cliquez sur "Add New..." → "Project"
-3. Importez votre dépôt GitHub
-4. Vercel détectera automatiquement la configuration PHP
-5. Cliquez sur "Deploy"
+## Structure du projet
 
-## ⚙️ Configuration Vercel
-
-### Paramètres recommandés :
-- **Framework Preset** : Other
-- **Build Command** : (laisser vide)
-- **Output Directory** : (laisser vide)
-- **Install Command** : (laisser vide)
-
-### Variables d'environnement (optionnel) :
 ```
-VERCEL=1
+api/
+├── router.php          # Routeur principal
+├── index.php          # Test API
+├── health.php         # Endpoint santé
+├── factures.php       # API factures
+└── produits.php       # API produits
 ```
 
-## 🌐 Accès à l'application
+## URLs de test
 
-Une fois déployé, vous recevrez une URL comme :
-```
-https://facturepro.vercel.app
-```
+- **Accueil** : `https://votre-app.vercel.app/`
+- **Test API** : `https://votre-app.vercel.app/api/index.php`
+- **Santé** : `https://votre-app.vercel.app/api/health.php`
+- **Login** : `https://votre-app.vercel.app/auth/login.php`
 
-Vous pourrez y accéder depuis :
-- Votre ordinateur
-- Votre téléphone
-- N'importe quel appareil connecté à internet
+## Configuration Vercel
 
-## ⚠️ Limitations importantes
+Le projet utilise :
+- Runtime PHP Vercel (`vercel-php@0.9.0`)
+- Sessions stockées dans `/tmp`
+- Fichiers de données dans `/tmp`
+- Rewrite toutes les requêtes vers `/api/router.php`
 
-### 1. **Stockage des fichiers**
-Sur Vercel, les fichiers sont stockés dans `/tmp` qui est :
-- **Temporaire** : Les fichiers peuvent être effacés
-- **Non persistant** entre les déploiements
-- **Partagé** entre toutes les instances
+## Dépannage
 
-**Solution** : Pour une app de production, migrez vers :
-- Base de données MySQL/PostgreSQL
-- Service de stockage comme AWS S3
-- Base de données serverless comme Supabase
+1. **Sessions ne fonctionnent pas** : Vérifier que `/tmp` est accessible en écriture
+2. **Fichiers de données non chargés** : Exécuter `init-vercel.php` manuellement
+3. **Routes 404** : Vérifier le mapping dans `router.php`
 
-### 2. **Sessions PHP**
-Les sessions PHP ne persistent pas sur Vercel.
+## Variables d'environnement
 
-**Solution** : Utilisez des cookies ou migrez vers une authentification JWT.
+Aucune variable d'environnement requise. L'application détecte automatiquement si elle tourne sur Vercel via `$_ENV['VERCEL']`.
 
-### 3. **Performances**
-Vercel utilise des fonctions serverless (cold starts).
+## Notes importantes
 
-## 🔧 Pour le développement
-
-### Localement avec PHP intégré :
-```bash
-php -S localhost:3000
-```
-
-### Avec XAMPP :
-Placez le dossier dans `htdocs` et accédez à :
-```
-http://localhost/tp_php01
-```
-
-## 📞 Support
-- Documentation Vercel PHP : https://vercel.com/docs/functions/serverless-functions/runtimes/php
-- GitHub du projet : Votre dépôt
-- Pour des questions : Consultez la documentation Vercel
-
-## 🎯 Prochaines étapes recommandées
-1. Déployer sur Vercel pour tester
-2. Migrer les données vers une base de données
-3. Implémenter l'authentification JWT
-4. Ajouter un système de backup des données
+- Les fichiers dans `/tmp` sont persistants entre les déploiements
+- Les sessions expirent après 24h d'inactivité
+- L'application est compatible PWA (Progressive Web App)

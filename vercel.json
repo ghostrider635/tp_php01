@@ -1,10 +1,31 @@
 {
   "functions": {
     "api/*.php": {
-      "runtime": "vercel-php@0.9.0"
+      "runtime": "vercel-php@0.9.0",
+      "memory": 1024,
+      "maxDuration": 10
     }
   },
   "rewrites": [
     { "source": "/(.*)", "destination": "/api/router.php" }
-  ]
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "X-XSS-Protection", "value": "1; mode=block" }
+      ]
+    },
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    }
+  ],
+  "env": {
+    "PHP_INI_SCAN_DIR": "/var/task/user/php/conf.d:/var/task/php/conf.d"
+  }
 }
