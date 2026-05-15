@@ -6,9 +6,7 @@
     "dev": "php -S localhost:3000"
   },
   "dependencies": {},
-  "devDependencies": {
-    "@vercel/php": "^0.6.0"
-  },
+  "devDependencies": {},
   "engines": {
     "node": ">=14"
   }
