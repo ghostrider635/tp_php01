@@ -1,6 +1,12 @@
 ====================================================
   SYSTÈME DE FACTURATION – UPC FSI 2025-2026
 ====================================================
+ membre  du groupe 
+
+waseka kibalikwa aron 
+wilu kestia Bénédicte 
+tshama shako fatou 
+
 
 PRÉREQUIS
 ---------
